@@ -1,6 +1,9 @@
 PDF text parser
 ===============
 
+[![Build Status](https://travis-ci.org/skuola/pdf-text-parser.png?branch=master)](https://travis-ci.org/skuola/pdf-text-parser)
+
+
 This library is a parser for XML text files obtained via [pdftotext](https://en.wikipedia.org/wiki/Pdftotext)
 
 Suppose you're just converted a pdf file, getting some text like the following:
