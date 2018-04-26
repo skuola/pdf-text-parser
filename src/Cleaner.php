@@ -28,6 +28,8 @@ final class Cleaner
         'â¦' => '◦',
         'ï ' => ':',
         'â' => '\'',
+        'Ã·' => '÷',
+        'Î©' => 'Ω',
     ];
 
     public static function clear(string $input): string
