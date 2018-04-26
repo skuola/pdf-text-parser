@@ -1,0 +1,28 @@
+{
+    "name": "skuola/pdf_text_parser",
+    "description": "Library to parse XML resulting from pdftotext",
+    "keywords": ["pdf", "pdftotext", "text"],
+    "type": "library",
+    "require": {
+        "php": "^7.2",
+        "symfony/css-selector": "^2.7|^3.4|^4.0",
+        "symfony/dom-crawler": "^2.7|^3.4|^4.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.8",
+        "phpunit/phpunit": "^7.1"
+    },
+    "autoload": {
+        "psr-4": { "Skuola\\PdfTextParser\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Skuola\\PdfTextParser\\Test\\": "tests" }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Massimiliano Arione",
+            "email": "garakkio@gmail.com"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+.gitattributes   export-ignore
+.gitignore       export-ignore
+.php_cs          export-ignore
+composer.json    export-ignore
+data             export-ignore
+examples         export-ignore
+phpunit.xml.dist export-ignore
+README.md        export-ignore
+tests            export-ignore
