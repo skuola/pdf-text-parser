@@ -1,5 +1,5 @@
 {
-    "name": "skuola/pdf_text_parser",
+    "name": "skuola/pdf-text-parser",
     "description": "Library to parse XML resulting from pdftotext",
     "keywords": ["pdf", "pdftotext", "text"],
     "type": "library",
