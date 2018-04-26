@@ -2,7 +2,8 @@ PDF text parser
 ===============
 
 [![Build Status](https://travis-ci.org/skuola/pdf-text-parser.png?branch=master)](https://travis-ci.org/skuola/pdf-text-parser)
-
+[![Code Climate](https://codeclimate.com/github/skuola/pdf-text-parser/badges/gpa.svg)](https://codeclimate.com/github/skuola/pdf-text-parser)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5409d200-2a71-4486-824d-f890791308ea/mini.png)](https://insight.sensiolabs.com/projects/5409d200-2a71-4486-824d-f890791308ea)
 
 This library is a parser for XML text files obtained via [pdftotext](https://en.wikipedia.org/wiki/Pdftotext)
 
