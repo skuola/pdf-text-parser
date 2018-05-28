@@ -41,8 +41,8 @@ class Converter
     
     private function convert(string $data, int $startPage, int $numOfPages): void
     {
-	$crawler = new Crawler();
-	$crawler->addHtmlContent($data);
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($data);
         $pages = $crawler->filter('body > doc > page');
         $ws = [];
         foreach ($pages as $number => $domElement) {

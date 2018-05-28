@@ -31,6 +31,14 @@ final class ConverterTest extends TestCase
         $this->assertEquals($out, $converter->getAsText());
     }
 
+    public function testItShouldConvertUtf8Content(): void
+    {
+        $in = '<body><doc><page><word xMin="159.799000" yMin="355.437050" xMax="167.547910" yMax="364.841744">ξ ≤ ∃ϕ → ∧∀</word></page></doc></body>';
+        $out = '<p>ξ ≤ ∃ϕ → ∧∀</p>';
+        $converter = new Converter($in);
+        $this->assertEquals($out, $converter->getAsHtml());
+    }
+
     public function testItShouldFindTitle(): void
     {
         $in = '<body><doc><page><word xMin="56.640000" yMin="59.770680" xMax="118.022880" yMax="72.406680">TITLE</word></page></doc></body>';
