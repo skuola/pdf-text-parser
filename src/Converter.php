@@ -41,14 +41,15 @@ class Converter
     
     private function convert(string $data, int $startPage, int $numOfPages): void
     {
-        $crawler = new Crawler($data);
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($data);
         $pages = $crawler->filter('body > doc > page');
         $ws = [];
         foreach ($pages as $number => $domElement) {
             if ($number >= $startPage && $number < $startPage + $numOfPages) {
                 foreach ($domElement->childNodes as $word) {
                     $ws[] = [
-                        'text' => Cleaner::clear($word->nodeValue),
+                        'text' => $word->nodeValue,
                         'xmin' => (float)$word->attributes->getNamedItem('xmin')->value,
                         'ymin' => (float)$word->attributes->getNamedItem('ymin')->value,
                         'xmax' => (float)$word->attributes->getNamedItem('xmax')->value,
