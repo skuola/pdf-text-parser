@@ -7,6 +7,8 @@ PDF text parser
 
 This library is a parser for XML text files obtained via [pdftotext](https://en.wikipedia.org/wiki/Pdftotext)
 
+You can install it using `composer require skuola/pdf-text-parser`
+
 Suppose you're just converted a pdf file, getting some text like the following:
 
 ```
