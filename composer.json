@@ -4,7 +4,7 @@
     "keywords": ["pdf", "pdftotext", "text"],
     "type": "library",
     "require": {
-        "php": "^7.2",
+        "php": "^7.1",
         "symfony/css-selector": "^2.7|^3.4|^4.0",
         "symfony/dom-crawler": "^2.7|^3.4|^4.0"
     },
