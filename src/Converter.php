@@ -8,7 +8,7 @@ class Converter
 {
     private $rows = [];
 
-    public function __construct(?string $data, ?string $path = null, ?int $startPage = 0, ?int $numOfPages = 1)
+    public function __construct(string $data = null, string $path = null, int $startPage = 0, int $numOfPages = 1)
     {
         if (null === $data && null === $path) {
             throw new \InvalidArgumentException('You must pass data or a file path.');
@@ -39,7 +39,7 @@ class Converter
         return $output;
     }
     
-    private function convert(string $data, int $startPage, int $numOfPages): void
+    private function convert(string $data, int $startPage, int $numOfPages) 
     {
         $crawler = new Crawler();
         $crawler->addHtmlContent($data);

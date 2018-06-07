@@ -7,13 +7,13 @@ use Skuola\PdfTextParser\Converter;
 
 final class ConverterTest extends TestCase
 {
-    public function testConstructWithWrongParamsShouldFail(): void
+    public function testConstructWithWrongParamsShouldFail()
     {
         $this->expectException(\InvalidArgumentException::class);
         new Converter(null);
     }
 
-    public function testConstructWithWrongPathShouldFail(): void
+    public function testConstructWithWrongPathShouldFail()
     {
         $this->expectException(\UnexpectedValueException::class);
         new Converter(null, 'doesnotexist');
@@ -25,13 +25,13 @@ final class ConverterTest extends TestCase
      * @param string $in
      * @param string $out
      */
-    public function testItShouldConvertBasicContent(string $in, string $out): void
+    public function testItShouldConvertBasicContent(string $in, string $out)
     {
         $converter = new Converter($in);
         $this->assertEquals($out, $converter->getAsText());
     }
 
-    public function testItShouldConvertUtf8Content(): void
+    public function testItShouldConvertUtf8Content()
     {
         $in = '<body><doc><page><word xMin="159.799000" yMin="355.437050" xMax="167.547910" yMax="364.841744">ξ ≤ ∃ϕ → ∧∀</word></page></doc></body>';
         $out = '<p>ξ ≤ ∃ϕ → ∧∀</p>';
@@ -39,7 +39,7 @@ final class ConverterTest extends TestCase
         $this->assertEquals($out, $converter->getAsHtml());
     }
 
-    public function testItShouldFindTitle(): void
+    public function testItShouldFindTitle()
     {
         $in = '<body><doc><page><word xMin="56.640000" yMin="59.770680" xMax="118.022880" yMax="72.406680">TITLE</word></page></doc></body>';
         $out = '<h2>TITLE</h2>';
@@ -47,7 +47,7 @@ final class ConverterTest extends TestCase
         $this->assertEquals($out, $converter->getAsHtml());
     }
 
-    public function testItShouldNotFindTitle(): void
+    public function testItShouldNotFindTitle()
     {
         $in = '<body><doc><page><word xMin="56.640000" yMin="59.770680" xMax="118.022880" yMax="72.406680">NOT A title</word></page></doc></body>';
         $out = '<p>NOT A title</p>';

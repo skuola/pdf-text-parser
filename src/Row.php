@@ -4,7 +4,7 @@ namespace Skuola\PdfTextParser;
 
 class Row
 {
-    private const TITLE_THRESHOLD = 0.8;
+    const TITLE_THRESHOLD = 0.8;
 
     /**
      * @var array|Word[]
