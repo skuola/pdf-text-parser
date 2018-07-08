@@ -55,6 +55,14 @@ final class ConverterTest extends TestCase
         $this->assertEquals($out, $converter->getAsHtml());
     }
 
+    public function testItShouldEscapeHtml(): void
+    {
+        $in = '<body><doc><page><word xMin="56.640000" yMin="59.770680" xMax="118.022880" yMax="72.406680">&lt;h2&gt;NOT A &quot;title&quot;&lt;/h2&gt;</word></page></doc></body>';
+        $out = '<p>&lt;h2&gt;NOT A &quot;title&quot;&lt;/h2&gt;</p>';
+        $converter = new Converter($in);
+        $this->assertEquals($out, $converter->getAsHtml(true));
+    }
+
     public function textProvider(): array
     {
         return [

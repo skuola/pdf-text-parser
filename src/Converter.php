@@ -29,12 +29,13 @@ class Converter
         return $output;
     }
 
-    public function getAsHtml(): string
+    public function getAsHtml(bool $escape = false): string
     {
         $output = '';
         foreach ($this->rows as $row) {
-            $output .= $row->isTitle() ? '<h2>'.$row.'</h2>' : '<p>'.$row.'</p>';
-        }
+            $html = (true === $escape) ? htmlentities($row, ENT_QUOTES) : $row;
+            $output .= $row->isTitle() ? '<h2>'.$html.'</h2>' : '<p>'.$html.'</p>';
+	}
 
         return $output;
     }
