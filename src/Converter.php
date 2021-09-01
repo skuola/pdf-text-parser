@@ -35,7 +35,7 @@ class Converter
         $checkOutput = '';
         
         foreach ($this->rows as $row) {
-            $checkOutput .= $row.PHP_EOL;
+            $checkOutput .= $row;
 
             if ( strlen($checkOutput) > $numberOfCharacters ){
                 break;
