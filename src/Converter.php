@@ -29,6 +29,25 @@ class Converter
         return $output;
     }
 
+    public function getSubstringHtml(string $numberOfCharacter, bool $escape = false): string
+    {
+        $output = '';
+        $checkOutput = '';
+        
+        foreach ($this->rows as $row) {
+            $checkOutput .= $row.PHP_EOL;
+
+            if ( strlen($checkOutput) > $numberOfCharacter ){
+                break;
+            }
+
+            $html = (true === $escape) ? htmlentities($row, ENT_QUOTES) : $row;
+            $output .= $row->isTitle() ? '<h2>'.$html.'</h2>' : '<p>'.$html.'</p>';
+        }
+
+        return $output;
+    }
+
     public function getAsHtml(bool $escape = false): string
     {
         $output = '';
