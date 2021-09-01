@@ -49,13 +49,15 @@ class Converter
         foreach ($pages as $number => $domElement) {
             if ($number >= $startPage && $number < $startPage + $numOfPages) {
                 foreach ($domElement->childNodes as $word) {
-                    $ws[] = [
-                        'text' => $word->nodeValue,
-                        'xmin' => (float)$word->attributes->getNamedItem('xmin')->value,
-                        'ymin' => (float)$word->attributes->getNamedItem('ymin')->value,
-                        'xmax' => (float)$word->attributes->getNamedItem('xmax')->value,
-                        'ymax' => (float)$word->attributes->getNamedItem('ymax')->value,
-                    ];
+                    if ( !is_null($word->attributes) ){
+                        $ws[] = [
+                            'text' => $word->nodeValue,
+                            'xmin' => (float) $word->attributes->getNamedItem('xmin')->value,
+                            'ymin' => (float) $word->attributes->getNamedItem('ymin')->value,
+                            'xmax' => (float) $word->attributes->getNamedItem('xmax')->value,
+                            'ymax' => (float) $word->attributes->getNamedItem('ymax')->value,
+                        ];
+                    }
                 }
             }
         }
