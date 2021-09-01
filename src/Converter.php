@@ -29,7 +29,7 @@ class Converter
         return $output;
     }
 
-    public function getSubstringHtml(string $numberOfCharacter, bool $escape = false): string
+    public function getSubstringHtml(string $numberOfCharacters, bool $escape = false): string
     {
         $output = '';
         $checkOutput = '';
