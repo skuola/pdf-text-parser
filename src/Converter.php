@@ -23,7 +23,26 @@ class Converter
     {
         $output = '';
         foreach ($this->rows as $row) {
-            $output .= $row.PHP_EOL;
+            $output .= $row.\PHP_EOL;
+        }
+
+        return $output;
+    }
+
+    public function getSubstringHtml(int $numberOfCharacters, bool $escape = false): string
+    {
+        $output = '';
+        $checkOutput = '';
+
+        foreach ($this->rows as $row) {
+            $checkOutput .= $row;
+
+            if (\strlen($checkOutput) > $numberOfCharacters) {
+                break;
+            }
+
+            $html = (true === $escape) ? htmlentities($row, \ENT_QUOTES) : $row;
+            $output .= $row->isTitle() ? '<h2>'.$html.'</h2>' : '<p>'.$html.'</p>';
         }
 
         return $output;
@@ -33,13 +52,13 @@ class Converter
     {
         $output = '';
         foreach ($this->rows as $row) {
-            $html = (true === $escape) ? htmlentities($row, ENT_QUOTES) : $row;
+            $html = (true === $escape) ? htmlentities($row, \ENT_QUOTES) : $row;
             $output .= $row->isTitle() ? '<h2>'.$html.'</h2>' : '<p>'.$html.'</p>';
-	}
+        }
 
         return $output;
     }
-    
+
     private function convert(string $data, int $startPage, int $numOfPages): void
     {
         $crawler = new Crawler();
@@ -49,7 +68,7 @@ class Converter
         foreach ($pages as $number => $domElement) {
             if ($number >= $startPage && $number < $startPage + $numOfPages) {
                 foreach ($domElement->childNodes as $word) {
-                    if ( !is_null($word->attributes) ){
+                    if (null !== $word->attributes) {
                         $ws[] = [
                             'text' => $word->nodeValue,
                             'xmin' => (float) $word->attributes->getNamedItem('xmin')->value,
