@@ -29,12 +29,20 @@ class Converter
         return $output;
     }
 
-    public function getSubstringHtml(int $numberOfCharacters, bool $escape = false): string
+    public function getSubstringHtml(int $numberOfCharacters, bool $escape = false, bool $random = false): string
     {
         $output = '';
         $checkOutput = '';
+        $startRow = 0;
 
-        foreach ($this->rows as $row) {
+        if ($random) {
+            $startRow = rand(0, intval(count($this->rows) / 2));
+        }
+
+        for ($i = $startRow; $i < count($this->rows) - 1; $i++) {
+
+            $row = $this->rows[$i];
+
             $checkOutput .= $row;
 
             if (\strlen($checkOutput) > $numberOfCharacters) {
@@ -43,6 +51,7 @@ class Converter
 
             $html = (true === $escape) ? htmlentities($row, \ENT_QUOTES) : $row;
             $output .= $row->isTitle() ? '<h2>'.$html.'</h2>' : '<p>'.$html.'</p>';
+
         }
 
         return $output;
