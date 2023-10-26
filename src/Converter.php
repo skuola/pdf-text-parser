@@ -34,6 +34,7 @@ class Converter
         $output = '';
         $checkOutput = '';
         $startRow = 0;
+        $rows = $this->rows;
 
         if ($random) {
 
@@ -61,8 +62,6 @@ class Converter
                 $startRow = rand(0, $rowsToTake);
             }
 
-        } else {
-            $rows = $this->rows;
         }
 
         for ($i = $startRow; $i < count($rows) - 1; $i++) {
