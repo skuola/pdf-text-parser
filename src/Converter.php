@@ -36,10 +36,36 @@ class Converter
         $startRow = 0;
 
         if ($random) {
-            $startRow = rand(0, intval(count($this->rows) / 2));
+
+
+            $rowsToTake = intval((count($this->rows) - 1) * 0.5);
+            $rows = array_slice($this->rows, 0, $rowsToTake);
+
+            // Check for titles
+            $titles = array_filter($rows, function ($row) {
+                return $row->isTitle();
+            });
+
+            /**
+             * If there is at least one title
+             * take the first title as starting point
+             */
+            if (count($titles) > 0) {
+                $startRow = array_search($titles[array_key_first($titles)], $rows);
+            }
+
+            /**
+             * Else take a random row as starting point
+             */
+            else {
+                $startRow = rand(0, $rowsToTake);
+            }
+
+        } else {
+            $rows = $this->rows;
         }
 
-        for ($i = $startRow; $i < count($this->rows) - 1; $i++) {
+        for ($i = $startRow; $i < count($rows) - 1; $i++) {
 
             $row = $this->rows[$i];
 
