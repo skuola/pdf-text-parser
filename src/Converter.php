@@ -29,49 +29,16 @@ class Converter
         return $output;
     }
 
-    public function getSubstringHtml(int $numberOfCharacters, bool $escape = false, bool $random = false): string
+    public function getSubstringHtml(int $numberOfCharacters, bool $escape = false): string
     {
         $output = '';
         $checkOutput = '';
-        $startRow = 0;
 
-        if ($random) {
-
-
-            $rowsToTake = intval((count($this->rows) - 1) * 0.5);
-            $rows = array_slice($this->rows, 0, $rowsToTake);
-
-            // Check for titles
-            $titles = array_filter($rows, function ($row) {
-                return $row->isTitle();
-            });
-
-            /**
-             * If there is at least one title
-             * take the first title as starting point
-             */
-            if (count($titles) > 0) {
-                $startRow = array_search($titles[array_key_first($titles)], $rows);
-            }
-
-            /**
-             * Else take a random row as starting point
-             */
-            else {
-                $startRow = rand(0, $rowsToTake);
-            }
-
-        } else {
-            $rows = $this->rows;
-        }
-
-        for ($i = $startRow; $i < count($rows) - 1; $i++) {
-
-            $row = $this->rows[$i];
+        foreach ($this->rows as $row) {
 
             $checkOutput .= $row;
 
-            if (\strlen($checkOutput) > $numberOfCharacters) {
+            if ($numberOfCharacters > 0 && \strlen($checkOutput) > $numberOfCharacters) {
                 break;
             }
 
